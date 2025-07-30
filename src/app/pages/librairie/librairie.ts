@@ -7,46 +7,34 @@ import { FormsModule } from '@angular/forms';
   selector: 'app-librairie',
   imports: [EmojiPipe, FormsModule],
   templateUrl: './librairie.html',
-  styleUrl: './librairie.css'
-
+  styleUrl: './librairie.css',
 })
 export class Librairie {
   books : Book[] = [
-    {title: "Livre 1", author: "Autheur 1", isRead: true},
-    {title: "Livre 2", author: "Autheur 1", isRead: false},
-    {title: "Livre 3", author: "Autheur 2", isRead: true},
-    {title: "Livre 4", author: "Autheur 1", isRead: false},
-    {title: "Livre 5", author: "Autheur 2", isRead: true},
+    {title: "Livre 1", author: "Auteur 1", isRead: true},
+    {title: "Livre 2", author: "Auteur 1", isRead: false},
+    {title: "Livre 3", author: "Auteur 2", isRead: true},
+    {title: "Livre 4", author: "Auteur 1", isRead: false},
+    {title: "Livre 5", author: "Auteur 2", isRead: true},
   ]
 
-  toggleIsRead(book: Book) : void {
-    book.isRead = !book.isRead
-  }
-
-
-  message : string = ""
-  message2 : string = ""
-  isSubmitted : boolean = false
-
-  book : Book = {
+  newBook : Book = {
     title: "",
     author: "",
     isRead: false
   }
 
-  updateMessage(event: Event) : void {
-    let input = event.target as HTMLInputElement
-    this.message = input.value
+  toggleIsRead(book: Book) : void {
+    book.isRead = !book.isRead
   }
 
-  submitBook() : void {
-    this.isSubmitted = true
-    
-    if (this.book){
-      console.log(this.book);
+  submitNewBook(): void {
+    const book : Book = {
+      ...this.newBook
     }
+
+    this.books.push(book)
+    this.newBook.title = ""
+    this.newBook.author = ""
   }
-
-
-
 }

@@ -1,0 +1,67 @@
+<div class="container mx-auto p-6">
+    <h1 class="font-bold text-gray-800 mb-6">POKEDEX</h1>
+
+    <section class="grid grid-cols-1 gap-7">
+        @for (pokemon of pokemons; track pokemon; let i = $index){
+            <div class="bg-slate-100 rounded-xl shadow-md p-6">
+                <h2>Nom : {{pokemon.nom}}</h2>
+                <p>Description : {{ pokemon.description }}</p>
+                <p>Degats : {{ pokemon.degats}}</p>
+                <p>Degats : {{ pokemon.type}}</p>
+                
+            </div>
+        }
+    </section>
+
+    <section>
+        <h2 class="font-bold text-gray-800 mb-6">Ajouter un pokemon</h2>
+
+        <form (ngSubmit)="submitNewPokemon()" >
+            <div>
+                <label for="nom">nom :</label>
+                <input type="text" name="nom" [(ngModel)]="newPokemon.nom" >
+            </div>
+            <div>
+                <label for="description">description :</label>
+                <input type="text" name="description" [(ngModel)]="newPokemon.description" >
+            </div>
+
+            <div>
+                <label for="degats">degats :</label>
+                <input type="text" name="degats" [(ngModel)]="newPokemon.degats" >
+            </div>
+
+            <div>
+                <label for="type">type :</label>
+                <input type="text" name="type" [(ngModel)]="newPokemon.type" >
+            </div>
+
+
+            <button type="submit" class="mt-2 w-full py-3 px-6 bg-slate-600 text-white hover:bg-slate-400 rounded">Ajouter</button>
+        </form>
+    </section>
+</div>
+
+
+
+
+
+
+
+
+
+<section>
+
+
+    <h2>En reactif</h2>
+
+    <form (ngSubmit)="submitNewPokemon()">
+        <label for="pokemon">nom du pokemon</label>
+        <input type="text" name="pokemon" >
+
+        <button>Ajouter</button>
+    </form>
+
+
+
+</section>
